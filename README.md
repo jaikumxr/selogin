@@ -1,1 +1,2 @@
-# SeLogin - User management template. Made with MongoDB, Express and Node.js
+# SeLogin
+## User management template. Made with MongoDB, Express and Node.js
