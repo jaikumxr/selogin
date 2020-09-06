@@ -78,16 +78,6 @@ app.get("/dashboard", isLoggedIn, function (req, res) {
     });
 });
 
-//uncomment this to create initial admin in case an admin deletes all users
-
-var newUser = {"username":"jaikumxr","isAdmin":true,"email":"jai@example.com"};
-var password = "hellojai";
-User.register(newUser, password, function(err,user){
-  if(err){
-    console.log(err);
-  }
-});
-
 //AUTH ROUTES
 
 //show signup form
