@@ -1,0 +1,88 @@
+<%- include("partials/header") %>
+
+
+
+<div class="container mbody">
+  <% if(success && success.length>0) {%>
+  <div class="alert alert-success d-flex">
+    <%=success%>
+  </div>
+  <br>
+  <% } %>
+  <% if(error && error.length>0) {%>
+  <div class="alert alert-danger d-flex">
+    <%=error%>
+  </div>
+  <br>
+  <% } %>
+  <h1 class="h6">Last updated on: <%= lastUpdate %> </h1>
+  <h1 class="h1">Search for vulnerabilities:</h1><br>
+  <h1 class="h5">Search by ID: </h1>
+  <form class="form-inline flex-row" action="/home/searchresults/id" method="POST">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Search by CVE ID</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Eg. CVE-2016-3445" name="cveid">
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <h1 class="h5">Search by other parameters:</h1>
+  <form class="form-inline flex-row" action="/home/searchresults/" method="post">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Select date range:</span>
+      </div>
+      <input type="date" name="first" placeholder="mm/dd/yyyy" maxlength="10" min="1998-01-01">
+      <h1 class="h6 mx-2 my-auto"> to </h1>
+      <input type="date" name="second" placeholder="mm/dd/yyyy" maxlength="10" min="1998-01-01">
+    </div>
+    <div class="form-group col-md-4 py-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Select severity:</span>
+      </div>
+      <div class="input-group-append">
+        <select class="form-control" name="severity">
+          <option value="ANY">ANY</option>
+          <option value="LOW">LOW</option>
+          <option value="MEDIUM">MEDIUM</option>
+          <option value="HIGH">HIGH</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group col-md-4 py-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Select type:</span>
+      </div>
+      <div class="input-group-append">
+        <select class="form-control" name="type">
+          <option value="ANY">ANY</option>
+          <option value="a">Application</option>
+          <option value="o">Operating System</option>
+          <option value="h">Hardware</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Product/Vendor:</span>
+      </div>
+      <input type="text" class="form-control" name="keywords" placeholder="Leave blank to search all">
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </div>
+     
+
+  </form>
+  <br>
+  <!-- <a class="btn btn-lg btn-outline-info" href="/all">See all</a> -->
+
+</div>
+
+<%- include("partials/footer") %>
