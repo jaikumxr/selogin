@@ -8,7 +8,8 @@ var bodyParser = require("body-parser"),
     User = require("./models/user"),
     flash = require("connect-flash");
 
-mongoose.connect("mongodb://localhost:27017/se", {
+mongoose.connect("mongodb+srv://neymar:1y13Z2yxJ6ExzYgp@cluster0.c1ez9.mongodb.net/se?retryWrites=true&w=majority", {
+// mongoose.connect("mongodb://localhost:27017/se", {
     useNewUrlParser: true,
     'useUnifiedTopology': true
 });
@@ -282,6 +283,10 @@ function isLoggedIn(req, res, next) {
 }
 
 
-app.listen(3000,function(){
-  console.log("server is up");
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+  }
+  app.listen(port , function(){
+    console.log("IMS is up");
+  });
